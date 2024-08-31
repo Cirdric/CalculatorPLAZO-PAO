@@ -1,0 +1,4 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Calculator" parent="Theme.AppCompat.NoActionBar">
+    </style>
+</resources>
