@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Calculate and display result while typing
+                // Calculate and display result while typing, without using the equal btn
                 val expression = s.toString()
                 try {
                     val result = evaluateExpression(expression)
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun onButtonClick(view: View) {
+    private fun onButtonClick(view: View) { //To baskspace or clear all user input
         val button = view as Button
         val buttonText = button.text.toString()
         val currentText = editText.text.toString()
@@ -96,14 +96,14 @@ class MainActivity : AppCompatActivity() {
         val currentText = editText.text.toString()
         try {
             val result = evaluateExpression(currentText)
-            val resultInt = result.toInt() // Convert result to integer
+            val resultInt = result.toInt() // Convert result to Double
             resultTextView.text = Editable.Factory.getInstance().newEditable(resultInt.toString())
         } catch (e: Exception) {
             editText.setText("Error: ${e.message}")
         }
     }
 
-    private fun evaluateExpression(expression: String): Double {
+    private fun evaluateExpression(expression: String): Double { //Convert into Double 
         return ExpressionBuilder(expression).build().evaluate()
     }
 }
